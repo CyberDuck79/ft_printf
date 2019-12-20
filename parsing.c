@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 23:54:23 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/12/11 11:33:09 by fhenrion         ###   ########.fr       */
+/*   Updated: 2019/12/20 21:00:36 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void		options(const char **str, t_arg *arg)
 			arg->o |= MINUS;
 		else if (**str == '0')
 			arg->o |= ZERO;
-		*str += 1;
+		(*str)++;
 	}
 	if (arg->o & MINUS && arg->o & ZERO)
 		arg->o &= ~ZERO;
@@ -53,7 +53,7 @@ static void		width(const char **str, t_arg *arg, va_list *arg_lst)
 		arg->o |= WIDTH;
 		arg->w = ft_atoi(*str);
 		while (**str > 47 && **str < 58)
-			*str += 1;
+			(*str)++;
 	}
 	else if (**str == '*')
 	{
@@ -66,7 +66,7 @@ static void		width(const char **str, t_arg *arg, va_list *arg_lst)
 			if (arg->o & ZERO)
 				arg->o &= ~ZERO;
 		}
-		*str += 1;
+		(*str)++;
 	}
 }
 
@@ -74,20 +74,20 @@ static void		precision(const char **str, t_arg *arg, va_list *arg_lst)
 {
 	if (**str == '.')
 	{
-		*str += 1;
+		(*str)++;
 		arg->o |= POINT;
 		if (**str == '*')
 		{
 			arg->p = (long)va_arg(*arg_lst, int);
 			if (arg->p < 0)
 				arg->o &= ~POINT;
-			*str += 1;
+			(*str)++;
 		}
 		else if (**str > 47 && **str < 58)
 		{
 			arg->p = ft_atoi(*str);
 			while (**str > 47 && **str < 58)
-				*str += 1;
+				(*str)++;
 		}
 		else
 			arg->p = 0;
