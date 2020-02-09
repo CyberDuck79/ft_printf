@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/27 23:54:23 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/12/20 21:00:36 by fhenrion         ###   ########.fr       */
+/*   Updated: 2020/02/09 09:12:28 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,14 @@
 
 static t_conv	conv_flags(const char c, const char *flags, t_arg *arg)
 {
-	size_t	index;
+	t_conv	flag_i;
 
-	if (c == 'd')
-		return (INTEGER);
 	if (c == 'X')
-	{
 		arg->o |= MAJ;
-		return (HEXA);
-	}
-	index = 0;
-	while (flags[index] && c != flags[index])
-		index++;
-	if (flags[index])
-		return ((t_conv)index);
-	return (ERROR);
+	flag_i = 0;
+	while (flags[flag_i] && c != flags[flag_i])
+		flag_i++;
+	return (flag_i);
 }
 
 static void		options(const char **str, t_arg *arg)
@@ -112,7 +105,7 @@ t_arg			*new_arg(const char *str, t_print *print)
 		return (NULL);
 	}
 	new->e = str + 1;
-	conv_flag = print->conv[conv_flag](new, &print->arg_lst);
+	print->conv[conv_flag](new, &print->arg_lst);
 	new->print = print->print[conv_flag];
 	return (new);
 }

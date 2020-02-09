@@ -6,16 +6,19 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 10:52:03 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/12/11 14:59:59 by fhenrion         ###   ########.fr       */
+/*   Updated: 2020/02/09 09:43:38 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "options.h"
 
 void			write_fill(size_t len, int zero)
 {
+	char	filler;
+
+	filler = zero ? '0' : ' ';
 	while (len--)
-		zero ? write(1, "0", 1) : write(1, " ", 1);
+		write(1, &filler, 1);
 }
 
 static size_t	ft_override(char *str, size_t len, t_arg *arg, int neg)

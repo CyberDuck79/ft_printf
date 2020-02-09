@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print.h                                            :+:      :+:    :+:   */
+/*   options.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/12/05 10:41:38 by fhenrion          #+#    #+#             */
-/*   Updated: 2020/02/09 09:40:15 by fhenrion         ###   ########.fr       */
+/*   Created: 2020/02/09 09:38:06 by fhenrion          #+#    #+#             */
+/*   Updated: 2020/02/09 09:39:38 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRINT_H
-# define PRINT_H
+#ifndef OPTIONS_H
+# define OPTIONS_H
 
-# include "../options.h"
+#include "ft_printf.h"
 
-size_t	print_str(t_arg *arg);
-size_t	print_char(t_arg *arg);
-size_t	print_nbr(t_arg *arg);
-size_t	print_pointer(t_arg *arg);
-size_t	print_unsign(t_arg *arg);
-size_t	print_hexa(t_arg *arg);
+void	write_fill(size_t len, int zero);
+size_t	ft_width(char *str, size_t len, t_arg *arg, int neg);
+size_t	print_options(char *str, size_t len, t_arg *arg, int neg);
 
 #endif

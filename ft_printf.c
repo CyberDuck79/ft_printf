@@ -6,7 +6,7 @@
 /*   By: fhenrion <fhenrion@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/09 13:16:27 by fhenrion          #+#    #+#             */
-/*   Updated: 2019/12/11 14:30:10 by fhenrion         ###   ########.fr       */
+/*   Updated: 2020/02/09 09:42:46 by fhenrion         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,12 @@ static void		ft_assign_print(t_print *print)
 	print->print[STRING] = print_str;
 	print->print[CHAR] = print_char;
 	print->print[INTEGER] = print_nbr;
+	print->print[DECIMAL] = print_nbr;
 	print->print[POINTER] = print_pointer;
 	print->print[UNSIGN] = print_unsign;
 	print->print[HEXA] = print_hexa;
+	print->print[HEXA_MAJ] = print_hexa;
+	print->print[PERCENT] = print_char;
 }
 
 static void		ft_assign_conv(t_print *print)
@@ -30,9 +33,11 @@ static void		ft_assign_conv(t_print *print)
 	print->conv[STRING] = string_conv;
 	print->conv[CHAR] = char_conv;
 	print->conv[INTEGER] = integer_conv;
+	print->conv[DECIMAL] = integer_conv;
 	print->conv[POINTER] = pointer_conv;
 	print->conv[UNSIGN] = unsigned_conv;
 	print->conv[HEXA] = hexa_conv;
+	print->conv[HEXA_MAJ] = hexa_conv;
 	print->conv[PERCENT] = percent_conv;
 }
 
